@@ -3,23 +3,36 @@ import Restaurent from '../assets/restaurent.png'
 import {signup} from "../utils/restapi.js";
 import {ToastContainer, toast, Bounce} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 export const Signup = () => {
 
-    const [showPass,setShowPass] = useState("password")
+    const navigateTo = useNavigate();
+    const [showPass, setShowPass] = useState("password");
+    const [formData, setFormData] = useState({
+        name: '',
+        phoneNumber: '',
+        email: '',
+        password: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
     const toggleShowPass = () =>{
         const passComp = document.querySelector(".password")
         passComp.type === "password" ? setShowPass("text") : setShowPass("password")
     }
 
-    const signUp = async(e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
         try{
-            let name = document.querySelector(".name").value.trim()
-            let email = document.querySelector(".email").value.trim()
-            let number = document.querySelector(".number").value.trim()
-            let password = document.querySelector(".password").value.trim()
-            if((name || email || number || password) === ""){
+            const {name,phoneNumber,email,password} = formData;
+            if((name || email || phoneNumber || password) === ""){
                 toast.error("Please Fill up the form", {
                     position: "top-center",
                     autoClose: 1000,
@@ -32,18 +45,14 @@ export const Signup = () => {
                     transition: Bounce
                 });
             } else {
-                const creds = {
-                    "name": name,
-                    "email": email,
-                    "phoneNumber": number,
-                    "password": password
-                }
-                const res = await signup(creds)
+                const res = await signup(formData)
                 if(res.status === 201){
-                    document.querySelector(".name").value = ""
-                    document.querySelector(".email").value = ""
-                    document.querySelector(".number").value = ""
-                    document.querySelector(".password").value = ""
+                    setFormData({
+                        name: '',
+                        phoneNumber: '',
+                        email: '',
+                        password: ''
+                    })
                     toast.success("Sign up successful", {
                         position: "top-center",
                         autoClose: 1000,
@@ -55,6 +64,7 @@ export const Signup = () => {
                         theme: "dark",
                         transition: Bounce,
                     });
+                    navigateTo("https://google.com")
                 }
             }
         } catch (e) {
@@ -71,32 +81,56 @@ export const Signup = () => {
                 </div>
                 <div className="card-body">
                     <h2>Sign Up</h2>
-                    <form className="form">
+                    <form className="form" onSubmit={handleSubmit}>
                         <label>
                             <p className="name-p">Name</p>
-                            <input required={true} className="name inp" type="text"/>
-                        </label>
-                        <label>
-                            <p className="email-p">Email</p>
-                            <input required={true} className="email inp" type="email"/>
+                            <input
+                                required={true}
+                                className="name inp"
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                            />
                         </label>
                         <label>
                             <p className="number-p">Phone Number</p>
-                            <input required={true} className="number inp" type="text"/>
+                            <input
+                                required={true}
+                                className="number inp"
+                                type="text"
+                                name="phoneNumber"
+                                value={formData.phoneNumber}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        <label>
+                            <p className="email-p">Email</p>
+                            <input
+                                required={true}
+                                className="email inp"
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
                         </label>
                         <label>
                             <p className="password-p">Password</p>
-                            <div className="pass-box">
-                                <input required={true} className="password inp" type={showPass}/>
-                                <div className="checkbox">
-                                    <input className="showpass" onClick={() => toggleShowPass()} type="checkbox"/>
-                                    <p>Show password</p>
-                                </div>
-                            </div>
+                            <input
+                                required={true}
+                                className="password inp"
+                                type={showPass}
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                            />
                         </label>
-                        <div className="btn-wrap">
-                            <button onClick={(e) => signUp(e)} className="submit-btn">Submit</button>
+                        <div className="pass-box">
+                            <input className="showpass" onClick={() => toggleShowPass()} type="checkbox"/>
+                            <p>Show password</p>
                         </div>
+                        <button className="submit-btn" type="submit">Submit</button>
                     </form>
                 </div>
             </div>
