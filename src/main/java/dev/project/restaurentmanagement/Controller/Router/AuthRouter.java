@@ -15,6 +15,10 @@ public interface AuthRouter {
     @PostMapping("/signup")
     ResponseEntity<?> signUpUser(@RequestBody SignUpRequest signUpRequest);
 
+    @PostMapping("/admin")
+    ResponseEntity<?> signUpAdmin(@RequestBody SignUpRequest signUpRequest);
+
+
     @PostMapping("/login")
     AuthResponse createAuthToken(@RequestBody AuthRequest authRequest, HttpServletResponse res) throws IOException;
 }

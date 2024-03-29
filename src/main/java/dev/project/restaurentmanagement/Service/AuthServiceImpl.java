@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthServiceImpl implements AuthService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public AuthServiceImpl(UserRepository userRepository){
         this.userRepository=userRepository;
@@ -35,6 +35,26 @@ public class AuthServiceImpl implements AuthService {
                 .password(createdUser.getPassword())
                 .phoneNumber(createdUser.getPhoneNumber())
                 .role(Role.USER)
+                .build();
+    }
+
+    @Override
+    public UserDto createAdmin(SignUpRequest signUpRequest) {
+        User admin = User.builder()
+                .name(signUpRequest.getName())
+                .email(signUpRequest.getEmail())
+                .password(new BCryptPasswordEncoder().encode(signUpRequest.getPassword()))
+                .phoneNumber(signUpRequest.getPhoneNumber())
+                .role(Role.ADMIN)
+                .build();
+        User createdAdmin = userRepository.save(admin);
+        return UserDto.builder()
+                .id(createdAdmin.getId())
+                .name(createdAdmin.getName())
+                .email(createdAdmin.getEmail())
+                .password(createdAdmin.getPassword())
+                .phoneNumber(createdAdmin.getPhoneNumber())
+                .role(Role.ADMIN)
                 .build();
     }
 }

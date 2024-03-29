@@ -1,18 +1,15 @@
 import React, {useState} from 'react'
 import Restaurent from '../assets/restaurent.png'
-import {signup} from "../utils/restapi.js";
+import {login} from "../utils/restapi.js";
 import {ToastContainer, toast, Bounce} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
-
-
-export const Signup = () => {
+import {saveSession} from "../utils/utilityMethods.js";
+import {useNavigate} from "react-router-dom";
+export const Login = () => {
 
     const navigateTo = useNavigate();
     const [showPass, setShowPass] = useState("password");
     const [formData, setFormData] = useState({
-        name: '',
-        phoneNumber: '',
         email: '',
         password: ''
     });
@@ -24,12 +21,6 @@ export const Signup = () => {
             [name]: value,
         });
     };
-    const preventArrow = (e) => {
-        const key = e.key
-        if(key === 'ArrowUp' || key === 'ArrowDown'){
-            e.preventDefault()
-        }
-    }
     const toggleShowPass = () =>{
         const passComp = document.querySelector(".password")
         passComp.type === "password" ? setShowPass("text") : setShowPass("password")
@@ -38,9 +29,30 @@ export const Signup = () => {
     const handleSubmit = async(e) => {
         e.preventDefault()
         try{
-            const {name,phoneNumber,email,password} = formData;
-            if((name || email || phoneNumber || password) === ""){
-                toast.error("Please Fill up the form", {
+            const {email,password} = formData;
+            const res = await login(formData)
+            if(res.status === 200){
+                saveSession(res);
+                setFormData({
+                    email: '',
+                    password: ''
+                })
+                toast.success("Login successful", {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
+                res?.data?.role === "ADMIN"
+                    ? navigateTo("/admin/dashboard")
+                    : navigateTo("/")
+            } else {
+                toast.error("Enter valid credentials", {
                     position: "top-center",
                     autoClose: 1000,
                     hideProgressBar: false,
@@ -51,28 +63,6 @@ export const Signup = () => {
                     theme: "dark",
                     transition: Bounce
                 });
-            } else {
-                const res = await signup(formData)
-                if(res.status === 201){
-                    setFormData({
-                        name: '',
-                        phoneNumber: '',
-                        email: '',
-                        password: ''
-                    })
-                    toast.success("Sign up successful", {
-                        position: "top-center",
-                        autoClose: 1000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                        transition: Bounce,
-                    });
-                    navigateTo("/login")
-                }
             }
         } catch (e) {
             toast(e)
@@ -84,31 +74,8 @@ export const Signup = () => {
             <ToastContainer />
             <div className="container">
                 <div className="card-body">
-                    <h2>Sign Up</h2>
+                    <h2>Login</h2>
                     <form className="form" onSubmit={handleSubmit}>
-                        <label>
-                            <p className="name-p">Name</p>
-                            <input
-                                required={true}
-                                className="name inp"
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            <p className="number-p">Phone Number</p>
-                            <input
-                                required={true}
-                                className="number inp"
-                                type="number"
-                                name="phoneNumber"
-                                onKeyDown={(e)=>preventArrow(e)}
-                                value={formData.phoneNumber}
-                                onChange={handleChange}
-                            />
-                        </label>
                         <label>
                             <p className="email-p">Email</p>
                             <input
@@ -136,7 +103,7 @@ export const Signup = () => {
                             <input className="showpass" onClick={() => toggleShowPass()} type="checkbox"/>
                             <p>Show password</p>
                         </div>
-                        <a href="/login">Already have an account?</a>
+                        <a href="/signup">Don't have an account?</a>
                         <button className="submit-btn" type="submit">Submit</button>
                     </form>
                 </div>
