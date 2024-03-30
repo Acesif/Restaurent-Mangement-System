@@ -15,7 +15,7 @@ import java.util.Map;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilterConfig implements Filter {
 
-
+    private final String clientAppURL = "http://localhost:5173/*";
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;

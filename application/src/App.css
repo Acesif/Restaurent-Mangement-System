@@ -12,6 +12,27 @@ body {
   font-style: normal;
 }
 
+.submit-btn {
+  margin-top: 4rem;
+  margin-bottom: -2rem;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  border: 1px solid rgb(255, 222, 173);
+  background-color: rgb(255, 222, 173);
+  color: black;
+  font-weight: bold;
+  transition: all ease-in-out 300ms;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  transition: all ease-in-out 300ms;
+  background-color: white;
+  color: rgb(255, 222, 173);
+}
+
 @media screen and (max-width: 900px) {
   .container {
     flex-direction: column;
@@ -57,25 +78,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-.signup .container .card-body .form .submit-btn {
-  margin-top: 4rem;
-  margin-bottom: -2rem;
-  text-transform: uppercase;
-  font-size: 15px;
-  padding: 1rem 2rem;
-  border-radius: 25px;
-  border: 1px solid rgb(255, 222, 173);
-  background-color: rgb(255, 222, 173);
-  color: black;
-  font-weight: bold;
-  transition: all ease-in-out 300ms;
-  cursor: pointer;
-}
-.signup .container .card-body .form .submit-btn:hover {
-  transition: all ease-in-out 300ms;
-  background-color: white;
-  color: rgb(255, 222, 173);
 }
 .signup .container .card-body .form > label {
   display: flex;
@@ -258,6 +260,84 @@ nav {
 /* Dashboard */
 .dashboard .hero-section {
   color: black;
+}
+
+/* Category */
+.upload-page {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.upload-page h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+.upload-page form .img-up-container {
+  display: flex;
+  justify-content: space-between;
+}
+.upload-page form div {
+  margin-bottom: 20px;
+}
+.upload-page form div label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+.upload-page form div input[type=text],
+.upload-page form div textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+.upload-page form div input[type=text]:focus,
+.upload-page form div textarea:focus {
+  outline: none;
+  border-color: rgb(255, 222, 173);
+}
+.upload-page form div input[type=file] {
+  display: block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+.upload-page form div input[type=file]:focus {
+  outline: none;
+  border-color: rgb(255, 222, 173);
+}
+.upload-page form .submit-btn {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.upload-page form .remove-button {
+  background-color: rgba(255, 44, 44, 0.68);
+}
+.upload-page form .remove-button:hover {
+  background-color: white;
+  color: rgba(255, 44, 44, 0.68);
+  border: 1px solid rgba(255, 44, 44, 0.68);
+}
+
+@media only screen and (max-width: 600px) {
+  form div label {
+    font-size: 14px;
+  }
+  form div input[type=text],
+  form div textarea,
+  form div input[type=file] {
+    font-size: 14px;
+  }
+  form div button {
+    font-size: 14px;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

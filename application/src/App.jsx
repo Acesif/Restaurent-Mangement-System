@@ -4,6 +4,7 @@ import {Signup} from "./components/Signup.jsx";
 import {Home} from "./components/Home.jsx";
 import {Login} from "./components/Login.jsx";
 import {Dashboard} from './components/Dashboard.jsx'
+import {Category} from "./components/Category.jsx";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/admin/category" element={<Category />} />
         </Routes>
     </BrowserRouter>
   )

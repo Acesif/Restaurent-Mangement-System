@@ -1,11 +1,11 @@
 package dev.project.restaurentmanagement.Configurations;
 
-import dev.project.restaurentmanagement.Dto.UserDto;
 import io.github.cdimascio.dotenv.Dotenv;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -20,25 +20,28 @@ public class JwtUtil {
     Dotenv dotenv = Dotenv.load();
     private final String secret = dotenv.get("SECRET");
 
-    public String generateToken(String email){
-        Map<String,Object> claims = new HashMap<>();
+    public String generateToken(UserDetails userDetails) {
+        return generateToken(new HashMap<>(),userDetails);
+    }
+
+    private String generateToken(Map<String,Object> extractClaims,UserDetails userDetails) {
         return Jwts.builder()
-                .claims(claims)
-                .subject(email)
+                .claims(extractClaims)
+                .subject(userDetails.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 24*60*60*1000))
-                .signWith(getSigninKey())
+                .signWith(getSignKey())
                 .compact();
     }
 
-    private SecretKey getSigninKey(){
+    private SecretKey getSignKey(){
        byte[] keyBytes = Decoders.BASE64URL.decode(secret);
        return Keys.hmacShaKeyFor(keyBytes);
     }
     private Claims extractAllClaims(String token){
         return Jwts
                 .parser()
-                .verifyWith(getSigninKey())
+                .verifyWith(getSignKey())
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
@@ -49,13 +52,13 @@ public class JwtUtil {
         return resolver.apply(claims);
     }
 
-    public String extractEmail(String token){
+    public String extractUserName(String token){
         return extractClaim(token, Claims::getSubject);
     }
 
-    public boolean isValid(String token, UserDto userDto){
-       String email = extractEmail(token);
-       return (email.equals(userDto.getEmail())) && !isTokenExpired(token);
+    public boolean isValid(String token, UserDetails userDetails){
+       String email = extractUserName(token);
+       return (email.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
     private boolean isTokenExpired(String token){

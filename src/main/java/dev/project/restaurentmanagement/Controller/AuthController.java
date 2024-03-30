@@ -75,7 +75,7 @@ public class AuthController implements AuthRouter {
             return null;
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getEmail());
-        final String jwt = jwtUtil.generateToken(userDetails.getUsername());
+        final String jwt = jwtUtil.generateToken(userDetails);
         Optional<User> optUser = userRepository.findByEmail(userDetails.getUsername());
         AuthResponse authResponse = new AuthResponse();
         if(optUser.isPresent()){

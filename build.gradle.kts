@@ -35,6 +35,7 @@ dependencies {
 	implementation("io.jsonwebtoken:jjwt-api:0.12.5")
 	implementation("org.springframework.boot:spring-boot-starter-mail:3.2.4")
 	implementation("org.springframework.boot:spring-boot-starter-validation:3.2.4")
+	implementation("org.apache.commons:commons-lang3:3.14.0")
 	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("com.mysql:mysql-connector-j")
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.5")
