@@ -32,7 +32,7 @@ export const login = async (req) => {
 export const upload = async (formData) => {
    const headers = {
       "Authorization": `Bearer ${token}`,
-      "Content-Type" : "multipart/form-data", // Update Content-Type to multipart/form-data
+      "Content-Type" : "multipart/form-data",
    };
 
    try {
