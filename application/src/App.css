@@ -33,6 +33,45 @@ body {
   color: rgb(255, 222, 173);
 }
 
+/* sidebar */
+.section {
+  display: flex;
+}
+.section .sidebar {
+  width: 20vw;
+  height: 90vh;
+  background-color: rgb(255, 222, 173);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+.section .sidebar ul > a {
+  display: block;
+  margin-top: 30px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+.section .sidebar ul > a:hover {
+  font-weight: bold;
+}
+.section .categories-page {
+  max-height: 90vh;
+  width: 80vw;
+  padding: 5rem 10rem;
+  overflow-y: scroll;
+}
+.section .categories-page .category-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.section .categories-page .category-section > * {
+  flex: 1 0 auto;
+}
+
 @media screen and (max-width: 900px) {
   .container {
     flex-direction: column;
@@ -264,6 +303,7 @@ nav {
 
 /* Category */
 .upload-page {
+  flex: 1;
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
@@ -338,6 +378,10 @@ nav {
   form div button {
     font-size: 14px;
   }
+}
+.delete {
+  background-color: #fc6060;
+  margin: 0;
 }
 
 /*# sourceMappingURL=App.css.map */

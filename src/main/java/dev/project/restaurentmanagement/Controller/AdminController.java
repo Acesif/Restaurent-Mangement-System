@@ -38,4 +38,10 @@ public class AdminController implements AdminRouter {
         if(categoryDtoList == null) return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(categoryDtoList,HttpStatus.OK);
     }
+    @DeleteMapping("/category/{id}")
+    public ResponseEntity<Void> deleteCategory(@PathVariable("id") Integer id){
+        adminService.deleteCategory(id);
+        return new ResponseEntity<>(null,HttpStatus.OK);
+    }
+
 }

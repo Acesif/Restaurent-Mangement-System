@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from "./Navbar.jsx";
 import {Bounce, toast, ToastContainer} from "react-toastify";
 import {upload} from "../utils/restapi.js";
+import {Sidebar} from "./Sidebar.jsx";
 
 export const Category = () => {
     const [formData, setFormData] = useState({
@@ -39,6 +40,17 @@ export const Category = () => {
         });
         setImagePreview(null);
     };
+
+    const menu = [
+        {
+            "name": "Manage Categories",
+            "link": "http://localhost:5173/admin/category/manage"
+        },
+        {
+            "name": "Create Category",
+            "link": "http://localhost:5173/admin/category"
+        }
+    ];
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -91,55 +103,60 @@ export const Category = () => {
         <>
             <Navbar />
             <ToastContainer />
-            <div className="upload-page">
-                <h2>Upload Item</h2>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor="name">Name:</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="description">Description:</label>
-                        <textarea
-                            id="description"
-                            name="description"
-                            value={formData.description}
-                            onChange={handleChange}
-                            required
-                        ></textarea>
-                    </div>
-                    <div>
-                        <label htmlFor="image">Image:</label>
-                        <div className="img-up-container">
+            <div className="section">
+                <div className="wrapper">
+                    <Sidebar menu={menu}/>
+                </div>
+                <div className="upload-page">
+                    <h2>Upload Item</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div>
+                            <label htmlFor="name">Name:</label>
                             <input
-                                type="file"
-                                id="image"
-                                name="image"
-                                accept="image/*"
-                                onChange={handleImageChange}
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
                                 required
                             />
-                            {imagePreview &&
-                                <button onClick={handleRemoveImage} className="submit-btn remove-button">
-                                    Remove
-                                </button>
-                            }
                         </div>
-                    </div>
-                    {imagePreview && (
                         <div>
-                            <img src={imagePreview} alt="Preview" style={{maxWidth: '100%', marginTop: '10px' }} />
+                            <label htmlFor="description">Description:</label>
+                            <textarea
+                                id="description"
+                                name="description"
+                                value={formData.description}
+                                onChange={handleChange}
+                                required
+                            ></textarea>
                         </div>
-                    )}
-                    <button className="submit-btn" type="submit">Upload</button>
-                </form>
+                        <div>
+                            <label htmlFor="image">Image:</label>
+                            <div className="img-up-container">
+                                <input
+                                    type="file"
+                                    id="image"
+                                    name="image"
+                                    accept="image/*"
+                                    onChange={handleImageChange}
+                                    required
+                                />
+                                {imagePreview &&
+                                    <button onClick={handleRemoveImage} className="submit-btn remove-button">
+                                        Remove
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                        {imagePreview && (
+                            <div>
+                                <img src={imagePreview} alt="Preview" style={{maxWidth: '100%', marginTop: '10px' }} />
+                            </div>
+                        )}
+                        <button className="submit-btn" type="submit">Upload</button>
+                    </form>
+                </div>
             </div>
         </>
     );

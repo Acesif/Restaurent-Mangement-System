@@ -12,4 +12,6 @@ public interface AdminService {
     CategoryDto postCategory(CategoryDto categoryDto) throws Exception;
 
     List<CategoryDto> getAllCategories();
+
+    Void deleteCategory(Integer id);
 }
