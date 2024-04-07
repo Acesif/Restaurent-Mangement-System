@@ -35,6 +35,45 @@ body{
 }
 
 
+/* sidebar */
+.section{
+  display: flex;
+  .sidebar{
+    width: 20vw;
+    height: 90vh;
+    background-color: $theme-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    ul>a{
+      display: block;
+      margin-top: 30px;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: black;
+      &:hover{
+        font-weight: bold;
+      }
+    }
+  }
+  .categories-page{
+    max-height: 90vh;
+    width: 80vw;
+    padding: 5rem 10rem;
+    overflow-y: scroll;
+    .category-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      > * {
+        flex: 1 0 auto;
+      }
+    }
+  }
+}
+
 // SIGN UP //
 @media screen and (max-width: 900px) {
   .container{
@@ -276,6 +315,7 @@ nav {
 }
 /* Category */
 .upload-page {
+  flex: 1;
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
@@ -364,3 +404,8 @@ nav {
     }
   }
 }
+.delete{
+  background-color: #fc6060;
+  margin: 0;
+}
+

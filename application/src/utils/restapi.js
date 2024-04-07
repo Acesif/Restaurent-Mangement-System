@@ -48,8 +48,29 @@ export const upload = async (formData) => {
    }
 };
 export const getCategories = async() => {
+    const headers = {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type" : "application/json",
+    };
    try{
-      const result = await axios.get(`${baseURI}/admin/category`);
+      const result = await axios.get(`${baseURI}/admin/category`, {headers});
+      return {
+         "data": result.data,
+         "status": result.status,
+         "header": result.headers
+      };
+   } catch (e){
+      console.log(e)
+      return e
+   }
+}
+export const deleteCategory = async(id) => {
+   const headers = {
+      "Authorization": `Bearer ${token}`,
+      "Content-Type" : "application/json",
+   };
+   try{
+      const result = await axios.delete(`${baseURI}/admin/category/${id}`, {headers});
       return {
          "data": result.data,
          "status": result.status,

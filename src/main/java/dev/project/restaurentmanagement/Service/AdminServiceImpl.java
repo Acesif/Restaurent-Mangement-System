@@ -32,9 +32,9 @@ public class AdminServiceImpl implements AdminService {
         return CategoryDto.builder()
                 .id(savedCategory.getId())
                 .name(savedCategory.getName())
-                .description(categoryDto.getDescription())
+                .description(savedCategory.getDescription())
                 .image(categoryDto.getImage())
-                .returnedImage(categoryDto.getReturnedImage())
+                .returnedImage(savedCategory.getImage())
                 .build();
     }
 
@@ -44,5 +44,11 @@ public class AdminServiceImpl implements AdminService {
                 .stream()
                 .map(Category::getCategoryDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Void deleteCategory(Integer id) {
+        categoryRepository.deleteById(id);
+        return null;
     }
 }

@@ -5,6 +5,7 @@ import {Home} from "./components/Home.jsx";
 import {Login} from "./components/Login.jsx";
 import {Dashboard} from './components/Dashboard.jsx'
 import {Category} from "./components/Category.jsx";
+import ManageCategory from "./components/ManageCategory.jsx";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/admin/dashboard" element={<Dashboard />} />
             <Route path="/admin/category" element={<Category />} />
+            <Route path="/admin/category/manage" element={<ManageCategory />} />
         </Routes>
     </BrowserRouter>
   )
