@@ -27,4 +27,8 @@ public interface AdminRouter {
 
     @GetMapping("/{categoryId}/products")
     ResponseEntity<?> getAllProductsByCategory(@PathVariable("categoryId") Integer categoryId);
+
+    @GetMapping("/{categoryId}/product/{name}")
+    ResponseEntity<?> getProductsByCategoryAndTitle(@PathVariable("categoryId") Integer categoryId, @PathVariable("name") String name);
+
 }

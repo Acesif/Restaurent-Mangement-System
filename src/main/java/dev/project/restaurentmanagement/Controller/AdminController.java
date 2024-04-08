@@ -60,4 +60,11 @@ public class AdminController implements AdminRouter {
         return new ResponseEntity<>(productDtoList,HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<List<ProductDto>> getProductsByCategoryAndTitle(Integer categoryId, String name) {
+        List<ProductDto> productDtoList = adminService.getProductsByCategoryAndName(categoryId,name);
+        if(productDtoList == null) return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(productDtoList, HttpStatus.OK);
+    }
+
 }

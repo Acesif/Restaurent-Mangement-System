@@ -92,4 +92,12 @@ public class AdminServiceImpl implements AdminService {
                 .map(Product::getProductDto)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<ProductDto> getProductsByCategoryAndName(Integer category_id, String name) {
+        return productRepository.findAllByCategoryIdAndNameContaining(category_id,name)
+                .stream()
+                .map(Product::getProductDto)
+                .collect(Collectors.toList());
+    }
 }

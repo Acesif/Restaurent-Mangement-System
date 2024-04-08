@@ -19,4 +19,6 @@ public interface AdminService {
     ProductDto postProduct(Integer categoryId, ProductDto productDto) throws IOException;
 
     List<ProductDto> getAllProductsByCategory(Integer categoryId);
+
+    List<ProductDto> getProductsByCategoryAndName(Integer category_id, String name);
 }
