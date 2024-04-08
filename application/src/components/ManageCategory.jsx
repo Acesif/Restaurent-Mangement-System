@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Navbar from "./Navbar.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import {deleteCategory, getCategories} from "../utils/restapi.js";
-import { Sidebar } from "./Sidebar.jsx";
 
 const handleDelete = async(id) => {
     await deleteCategory(id);
@@ -46,9 +45,6 @@ const ViewCategories = () => {
             <Navbar />
             <ToastContainer />
             <div className="section">
-                <div className="wrapper">
-                    <Sidebar menu={menu}/>
-                </div>
                 <div className="categories-page">
                     {loading ? (
                         <p>Loading categories...</p>
@@ -60,6 +56,12 @@ const ViewCategories = () => {
                                         <div>
                                             <h3>{category.name}</h3>
                                             <p>{category.description}</p>
+                                        </div>
+                                        <div>
+                                            <button className="submit-btn view-prod">View Product
+                                            </button>
+                                            <button className="submit-btn post-prod">Post Product
+                                            </button>
                                         </div>
                                     </div>
                                     <img width="300px" height="300px" src={category.image} alt={category.description}/>

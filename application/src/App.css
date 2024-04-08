@@ -37,29 +37,9 @@ body {
 .section {
   display: flex;
 }
-.section .sidebar {
-  width: 20vw;
-  height: 90vh;
-  background-color: rgb(255, 222, 173);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 30px;
-}
-.section .sidebar ul > a {
-  display: block;
-  margin-top: 30px;
-  padding: 1rem 2rem;
-  cursor: pointer;
-  text-decoration: none;
-  color: black;
-}
-.section .sidebar ul > a:hover {
-  font-weight: bold;
-}
 .section .categories-page {
   max-height: 90vh;
-  width: 80vw;
+  width: 100vw;
   padding: 5rem 10rem;
   overflow-y: scroll;
 }
@@ -381,6 +361,10 @@ nav {
 }
 .delete {
   background-color: #fc6060;
+  margin: 0;
+}
+
+[class$=-prod] {
   margin: 0;
 }
 

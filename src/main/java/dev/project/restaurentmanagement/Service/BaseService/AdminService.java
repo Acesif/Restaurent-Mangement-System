@@ -1,8 +1,7 @@
 package dev.project.restaurentmanagement.Service.BaseService;
 
 import dev.project.restaurentmanagement.Dto.CategoryDto;
-import dev.project.restaurentmanagement.Entity.Category;
-import org.springframework.web.multipart.MultipartFile;
+import dev.project.restaurentmanagement.Dto.ProductDto;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,5 +12,11 @@ public interface AdminService {
 
     List<CategoryDto> getAllCategories();
 
-    Void deleteCategory(Integer id);
+    List<CategoryDto> getAllCategoriesByName(String name);
+
+    void deleteCategory(Integer id);
+
+    ProductDto postProduct(Integer categoryId, ProductDto productDto) throws IOException;
+
+    List<ProductDto> getAllProductsByCategory(Integer categoryId);
 }

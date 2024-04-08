@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Navbar from "./Navbar.jsx";
 import {Bounce, toast, ToastContainer} from "react-toastify";
 import {upload} from "../utils/restapi.js";
-import {Sidebar} from "./Sidebar.jsx";
 
 export const Category = () => {
     const [formData, setFormData] = useState({
@@ -40,17 +39,6 @@ export const Category = () => {
         });
         setImagePreview(null);
     };
-
-    const menu = [
-        {
-            "name": "Manage Categories",
-            "link": "http://localhost:5173/admin/category/manage"
-        },
-        {
-            "name": "Create Category",
-            "link": "http://localhost:5173/admin/category"
-        }
-    ];
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -104,9 +92,6 @@ export const Category = () => {
             <Navbar />
             <ToastContainer />
             <div className="section">
-                <div className="wrapper">
-                    <Sidebar menu={menu}/>
-                </div>
                 <div className="upload-page">
                     <h2>Upload Item</h2>
                     <form onSubmit={handleSubmit}>

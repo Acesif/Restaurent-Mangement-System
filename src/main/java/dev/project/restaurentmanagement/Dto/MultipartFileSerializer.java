@@ -12,17 +12,17 @@ public class MultipartFileSerializer extends JsonSerializer<MultipartFile> {
 
     @Override
     public void serialize(MultipartFile value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        gen.writeStartObject(); // Start the JSON object for the MultipartFile
+        gen.writeStartObject();
 
-        gen.writeStringField("originalFilename", value.getOriginalFilename()); // Serialize the original filename
-        gen.writeStringField("contentType", value.getContentType()); // Serialize the content type
-        gen.writeNumberField("size", value.getSize()); // Serialize the size of the file
+        gen.writeStringField("originalFilename", value.getOriginalFilename());
+        gen.writeStringField("contentType", value.getContentType());
+        gen.writeNumberField("size", value.getSize());
 
         byte[] content = value.getBytes();
         String base64Content = Base64.getEncoder().encodeToString(content);
         gen.writeStringField("content", base64Content);
 
-        gen.writeEndObject(); // End the JSON object for the MultipartFile
+        gen.writeEndObject();
     }
 }
 

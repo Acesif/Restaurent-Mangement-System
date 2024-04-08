@@ -15,9 +15,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/admin/dashboard" element={<Dashboard />} />
             <Route path="/admin/category" element={<Category />} />
-            <Route path="/admin/category/manage" element={<ManageCategory />} />
+            <Route path="/admin/dashboard" element={<ManageCategory />} />
         </Routes>
     </BrowserRouter>
   )
