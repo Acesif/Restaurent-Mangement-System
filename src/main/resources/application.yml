@@ -1,9 +1,9 @@
 spring:
   application:
-    name: RestaurentManagement
+    name: RestaurantManagement
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/restaurent
+    url: jdbc:mysql://localhost:3306/restaurant?createDatabaseIfNotExist=true&useSSL=true
     username: root
     password: root
   jpa:

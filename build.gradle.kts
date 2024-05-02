@@ -31,7 +31,6 @@ dependencies {
 	implementation("com.google.guava:guava:33.1.0-jre")
 	implementation("com.google.code.gson:gson:2.10.1")
 	implementation("com.vaadin.external.google:android-json:0.0.20131108.vaadin1")
-	implementation("org.springframework.boot:spring-boot-starter-security:3.2.4")
 	implementation("io.jsonwebtoken:jjwt-api:0.12.5")
 	implementation("org.springframework.boot:spring-boot-starter-mail:3.2.4")
 	implementation("org.springframework.boot:spring-boot-starter-validation:3.2.4")
@@ -41,9 +40,6 @@ dependencies {
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.5")
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.5")
 	annotationProcessor("org.projectlombok:lombok")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.security:spring-security-test:6.2.3")
-
 }
 
 tasks.withType<Test> {
