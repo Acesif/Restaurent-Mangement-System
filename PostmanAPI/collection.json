@@ -1,10 +1,8 @@
 {
 	"info": {
-		"_postman_id": "2173471c-3224-47a4-91c1-ce6e46d36ffe",
+		"_postman_id": "2f18377d-49de-45d7-bf06-6bc1d390cc53",
 		"name": "Restaurent Management",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "30664351",
-		"_collection_link": "https://dark-capsule-765763.postman.co/workspace/My-Workspace~23db06f8-eb15-4cca-8c62-bfb758f96ad3/collection/30664351-2173471c-3224-47a4-91c1-ce6e46d36ffe?action=share&source=collection_link&creator=30664351"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -12,6 +10,10 @@
 			"item": [
 				{
 					"name": "login-admin",
+					"id": "d5a58c60-422f-466a-9752-c324833b7125",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -30,6 +32,10 @@
 				},
 				{
 					"name": "login-user",
+					"id": "c97f0e97-2823-4d49-a8b5-d5f14dbc35a6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -48,6 +54,10 @@
 				},
 				{
 					"name": "register",
+					"id": "18458ef2-7f5c-4016-9e2f-5a9c33f91206",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -66,6 +76,10 @@
 				},
 				{
 					"name": "create-staff",
+					"id": "8114c2fd-b5a4-49a5-97d5-ecf63bbb1840",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -82,7 +96,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"id": "e5269459-dab3-4402-8a72-6c9502b1f153"
 		},
 		{
 			"name": "Admin",
@@ -92,6 +107,10 @@
 					"item": [
 						{
 							"name": "create",
+							"id": "1d28a7e6-3bbc-4d98-9518-42951079526a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -127,6 +146,10 @@
 						},
 						{
 							"name": "delete",
+							"id": "3df6bc78-0dc1-44c5-8dbd-8014aec77ae0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -162,6 +185,10 @@
 						},
 						{
 							"name": "getAll",
+							"id": "85df1863-d62b-4b88-a09a-4cd8143f5b7d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -175,13 +202,18 @@
 							},
 							"response": []
 						}
-					]
+					],
+					"id": "7c1c66a6-fc94-45e0-9767-6e92f65dd0f2"
 				},
 				{
 					"name": "Food",
 					"item": [
 						{
 							"name": "create",
+							"id": "2ac64d74-cc92-457f-bd79-baac951cd63e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -232,6 +264,10 @@
 						},
 						{
 							"name": "getAll",
+							"id": "533c7514-ff73-470d-afcd-8debda5b7be6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -245,9 +281,11 @@
 							},
 							"response": []
 						}
-					]
+					],
+					"id": "3b96a566-99e4-472b-91a1-3130e36879f9"
 				}
-			]
+			],
+			"id": "6cd1b1e3-6a59-4cde-be14-14f19eddd08d"
 		}
 	]
 }
