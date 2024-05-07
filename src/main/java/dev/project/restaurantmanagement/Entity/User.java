@@ -42,7 +42,7 @@ public class User implements Serializable, UserDetails {
     @Digits(integer = 11, fraction = 0)
     private String phoneNumber;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     @Email
     private String email;
 

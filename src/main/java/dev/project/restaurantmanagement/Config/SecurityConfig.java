@@ -1,5 +1,6 @@
 package dev.project.restaurantmanagement.Config;
 
+import dev.project.restaurantmanagement.Entity.Role;
 import dev.project.restaurantmanagement.Service.UserDetailsServiceImp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -29,10 +30,11 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
-                        req -> req.requestMatchers("/login/**","/register/**")
+                        req -> req
+                                .requestMatchers("/api/v1/auth/login","/api/v1/auth/register")
                                 .permitAll()
-                                .anyRequest()
-                                .authenticated()
+                                .requestMatchers("/api/v1/admin/**")
+                                .hasAuthority(Role.ADMIN.name())
                 )
                 .userDetailsService(userDetailsService)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

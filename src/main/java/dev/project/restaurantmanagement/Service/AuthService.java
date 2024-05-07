@@ -3,6 +3,7 @@ package dev.project.restaurantmanagement.Service;
 import dev.project.restaurantmanagement.Config.JwtService;
 import dev.project.restaurantmanagement.Dto.AuthResponse;
 import dev.project.restaurantmanagement.Dto.LoginRequest;
+import dev.project.restaurantmanagement.Dto.Response;
 import dev.project.restaurantmanagement.Dto.UserDto;
 import dev.project.restaurantmanagement.Entity.User;
 import dev.project.restaurantmanagement.Entity.Role;
@@ -25,7 +26,14 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthResponse registerUser(UserDto registerRequest) {
+    public Response registerUser(UserDto registerRequest) {
+        if(userRepository.findByEmail(registerRequest.getEmail()).isPresent()){
+            return Response.builder()
+                    .isSuccess(false)
+                    .code(400)
+                    .message("User already exists")
+                    .build();
+        }
         User user = User.builder()
                 .name(registerRequest.getName())
                 .email(registerRequest.getEmail())
@@ -37,14 +45,26 @@ public class AuthService {
 
         String token = jwtService.generateToken(createdUser);
 
-        return AuthResponse.builder()
-                .email(createdUser.getEmail())
-                .role(createdUser.getRole())
-                .token(token)
+        return Response.builder()
+                .isSuccess(true)
+                .code(201)
+                .message("User created successfully")
+                .values(AuthResponse.builder()
+                        .email(createdUser.getEmail())
+                        .role(createdUser.getRole())
+                        .token(token)
+                        .build())
                 .build();
     }
 
-    public AuthResponse registerAdmin(UserDto registerRequest) {
+    public Response registerAdmin(UserDto registerRequest) {
+        if(userRepository.findByEmail(registerRequest.getEmail()).isPresent()){
+            return Response.builder()
+                    .isSuccess(false)
+                    .code(400)
+                    .message("User already exists")
+                    .build();
+        }
         User admin = User.builder()
                 .name(registerRequest.getName())
                 .email(registerRequest.getEmail())
@@ -56,14 +76,19 @@ public class AuthService {
 
         String token = jwtService.generateToken(createdAdmin);
 
-        return AuthResponse.builder()
-                .email(createdAdmin.getEmail())
-                .role(createdAdmin.getRole())
-                .token(token)
+        return Response.builder()
+                .isSuccess(true)
+                .code(201)
+                .message("Admin created successfully")
+                .values(AuthResponse.builder()
+                        .email(createdAdmin.getEmail())
+                        .role(createdAdmin.getRole())
+                        .token(token)
+                        .build())
                 .build();
     }
 
-    public AuthResponse authenticate(LoginRequest request) {
+    public Response authenticate(LoginRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -74,13 +99,22 @@ public class AuthService {
         Optional<User> user = userRepository.findByEmail(request.getEmail());
         if(user.isPresent()){
             String token = jwtService.generateToken(user.get());
-            return AuthResponse.builder()
-                    .email(user.get().getEmail())
-                    .role(user.get().getRole())
-                    .token(token)
+            return Response.builder()
+                    .isSuccess(true)
+                    .code(200)
+                    .message("Logged in successfully")
+                    .values(AuthResponse.builder()
+                            .email(user.get().getEmail())
+                            .role(user.get().getRole())
+                            .token(token)
+                            .build())
                     .build();
         }
-        return null;
+        return Response.builder()
+                .isSuccess(false)
+                .code(400)
+                .message("User not found")
+                .build();
     }
 
     @PostConstruct

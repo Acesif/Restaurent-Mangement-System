@@ -3,6 +3,7 @@ package dev.project.restaurantmanagement.Controller;
 import dev.project.restaurantmanagement.Controller.Router.AuthRouter;
 import dev.project.restaurantmanagement.Dto.AuthResponse;
 import dev.project.restaurantmanagement.Dto.LoginRequest;
+import dev.project.restaurantmanagement.Dto.Response;
 import dev.project.restaurantmanagement.Dto.UserDto;
 import dev.project.restaurantmanagement.Service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -22,36 +23,24 @@ public class AuthController implements AuthRouter {
 
     @Override
     public ResponseEntity<?> check() {
-        return null;
+        return new ResponseEntity<>("hehe",HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> signUpUser(UserDto registerRequest) {
-        AuthResponse createdUserDto = authService.registerUser(registerRequest);
-
-        if(createdUserDto == null){
-            return new ResponseEntity<>("User creation failed", HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(createdUserDto,HttpStatus.CREATED);
+        Response createdUserDto = authService.registerUser(registerRequest);
+        return new ResponseEntity<>(createdUserDto,HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> loginUser(LoginRequest loginRequest) {
-        AuthResponse login = authService.authenticate(loginRequest);
-
-        if(login == null){
-            return new ResponseEntity<>("Login Failed", HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(login,HttpStatus.CREATED);
+        Response login = authService.authenticate(loginRequest);
+        return new ResponseEntity<>(login,HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> signUpAdmin(UserDto registerRequest) {
-        AuthResponse createdAdminDto = authService.registerAdmin(registerRequest);
-
-        if(createdAdminDto == null){
-            return new ResponseEntity<>("Admin creation failed", HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(createdAdminDto,HttpStatus.CREATED);
+        Response createdAdminDto = authService.registerAdmin(registerRequest);
+        return new ResponseEntity<>(createdAdminDto,HttpStatus.OK);
     }
 }

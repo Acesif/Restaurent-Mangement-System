@@ -11,12 +11,13 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthResponse implements Serializable {
+public class Response implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private String email;
-    private String token;
-    private Role role;
+    private Boolean isSuccess;
+    private Integer code;
+    private String message;
+    private AuthResponse values;
 }
