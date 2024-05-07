@@ -25,6 +25,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-security:3.2.5")
+	implementation("org.springframework.security:spring-security-core:6.2.4")
 	implementation("com.itextpdf:itextpdf:5.5.13.3")
 	implementation("org.apache.pdfbox:pdfbox:3.0.2")
 	implementation("io.github.cdimascio:dotenv-java:3.0.0")

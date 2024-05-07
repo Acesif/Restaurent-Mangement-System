@@ -3,7 +3,7 @@ package dev.project.restaurantmanagement.Controller;
 import dev.project.restaurantmanagement.Controller.Router.AdminRouter;
 import dev.project.restaurantmanagement.Dto.CategoryDto;
 import dev.project.restaurantmanagement.Dto.ProductDto;
-import dev.project.restaurantmanagement.Service.BaseService.AdminService;
+import dev.project.restaurantmanagement.Service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,20 +1,22 @@
 package dev.project.restaurantmanagement.Controller.Router;
 
-import dev.project.restaurantmanagement.Dto.AuthRequest;
-import dev.project.restaurantmanagement.Dto.AuthResponse;
-import dev.project.restaurantmanagement.Dto.SignUpRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import dev.project.restaurantmanagement.Dto.LoginRequest;
+import dev.project.restaurantmanagement.Dto.UserDto;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.io.IOException;
-
 public interface AuthRouter {
 
-    @PostMapping("/signup")
-    ResponseEntity<?> signUpUser(@RequestBody SignUpRequest signUpRequest);
+    @GetMapping("/")
+    ResponseEntity<?> check();
 
+    @PostMapping("/register")
+    ResponseEntity<?> signUpUser(@RequestBody UserDto registerRequest);
+
+    @PostMapping("/login")
+    ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest);
     @PostMapping("/admin")
-    ResponseEntity<?> signUpAdmin(@RequestBody SignUpRequest signUpRequest);
+    ResponseEntity<?> signUpAdmin(@RequestBody UserDto registerRequest);
 }

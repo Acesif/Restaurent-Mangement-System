@@ -6,7 +6,6 @@ import dev.project.restaurantmanagement.Entity.Category;
 import dev.project.restaurantmanagement.Entity.Product;
 import dev.project.restaurantmanagement.Repository.CategoryRepository;
 import dev.project.restaurantmanagement.Repository.ProductRepository;
-import dev.project.restaurantmanagement.Service.BaseService.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +17,11 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class AdminServiceImpl implements AdminService {
+public class AdminService {
 
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
 
-    @Override
     public CategoryDto postCategory(CategoryDto categoryDto) throws Exception{
         Category category = Category.builder()
                 .name(categoryDto.getName())
@@ -40,7 +38,6 @@ public class AdminServiceImpl implements AdminService {
                 .build();
     }
 
-    @Override
     public List<CategoryDto> getAllCategories() {
         return categoryRepository.findAll()
                 .stream()
@@ -48,7 +45,6 @@ public class AdminServiceImpl implements AdminService {
                 .collect(Collectors.toList());
     }
 
-    @Override
     public List<CategoryDto> getAllCategoriesByName(String name) {
         return categoryRepository.findAllByName(name)
                 .stream()
@@ -56,12 +52,10 @@ public class AdminServiceImpl implements AdminService {
                 .collect(Collectors.toList());
     }
 
-    @Override
     public void deleteCategory(Integer id) {
         categoryRepository.deleteById(id);
     }
 
-    @Override
     public ProductDto postProduct(Integer categoryId, ProductDto productDto) throws IOException {
         Optional<Category> category = categoryRepository.findById(categoryId);
         if(category.isPresent()){
@@ -85,7 +79,6 @@ public class AdminServiceImpl implements AdminService {
         return null;
     }
 
-    @Override
     public List<ProductDto> getAllProductsByCategory(Integer categoryId) {
         return productRepository.findAllByCategoryId(categoryId)
                 .stream()
@@ -93,7 +86,6 @@ public class AdminServiceImpl implements AdminService {
                 .collect(Collectors.toList());
     }
 
-    @Override
     public List<ProductDto> getProductsByCategoryAndName(Integer category_id, String name) {
         return productRepository.findAllByCategoryIdAndNameContaining(category_id,name)
                 .stream()

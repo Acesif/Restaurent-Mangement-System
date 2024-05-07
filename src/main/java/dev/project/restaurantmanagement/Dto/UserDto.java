@@ -1,6 +1,6 @@
 package dev.project.restaurantmanagement.Dto;
 
-import dev.project.restaurantmanagement.Enums.Role;
+import dev.project.restaurantmanagement.Entity.Role;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
