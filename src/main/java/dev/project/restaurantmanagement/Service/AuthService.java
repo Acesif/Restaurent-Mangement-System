@@ -26,9 +26,9 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public Response registerUser(UserDto registerRequest) {
+    public Response<AuthResponse> registerUser(UserDto registerRequest) {
         if(userRepository.findByEmail(registerRequest.getEmail()).isPresent()){
-            return Response.builder()
+            return Response.<AuthResponse>builder()
                     .isSuccess(false)
                     .code(400)
                     .message("User already exists")
@@ -45,7 +45,7 @@ public class AuthService {
 
         String token = jwtService.generateToken(createdUser);
 
-        return Response.builder()
+        return Response.<AuthResponse>builder()
                 .isSuccess(true)
                 .code(201)
                 .message("User created successfully")
@@ -57,9 +57,9 @@ public class AuthService {
                 .build();
     }
 
-    public Response registerAdmin(UserDto registerRequest) {
+    public Response<AuthResponse> registerAdmin(UserDto registerRequest) {
         if(userRepository.findByEmail(registerRequest.getEmail()).isPresent()){
-            return Response.builder()
+            return Response.<AuthResponse>builder()
                     .isSuccess(false)
                     .code(400)
                     .message("User already exists")
@@ -76,7 +76,7 @@ public class AuthService {
 
         String token = jwtService.generateToken(createdAdmin);
 
-        return Response.builder()
+        return Response.<AuthResponse>builder()
                 .isSuccess(true)
                 .code(201)
                 .message("Admin created successfully")
@@ -88,7 +88,7 @@ public class AuthService {
                 .build();
     }
 
-    public Response authenticate(LoginRequest request) {
+    public Response<AuthResponse> authenticate(LoginRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -99,7 +99,7 @@ public class AuthService {
         Optional<User> user = userRepository.findByEmail(request.getEmail());
         if(user.isPresent()){
             String token = jwtService.generateToken(user.get());
-            return Response.builder()
+            return Response.<AuthResponse>builder()
                     .isSuccess(true)
                     .code(200)
                     .message("Logged in successfully")
@@ -110,7 +110,7 @@ public class AuthService {
                             .build())
                     .build();
         }
-        return Response.builder()
+        return Response.<AuthResponse>builder()
                 .isSuccess(false)
                 .code(400)
                 .message("User not found")

@@ -22,9 +22,10 @@ import java.util.List;
 @Setter
 @Builder
 @Entity
-@DynamicInsert
-@DynamicUpdate
-@Table(name = "user")
+@Table(
+        name = "users",
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})}
+)
 public class User implements Serializable, UserDetails {
 
     @Serial
@@ -42,7 +43,7 @@ public class User implements Serializable, UserDetails {
     @Digits(integer = 11, fraction = 0)
     private String phoneNumber;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false)
     @Email
     private String email;
 

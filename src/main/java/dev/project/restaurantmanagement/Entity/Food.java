@@ -1,7 +1,7 @@
 package dev.project.restaurantmanagement.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import dev.project.restaurantmanagement.Dto.ProductDto;
+import dev.project.restaurantmanagement.Dto.FoodDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
@@ -13,22 +13,25 @@ import org.hibernate.annotations.OnDeleteAction;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "product")
-public class Product {
+@Table(
+        name = "food",
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"foodCode"})}
+)
+public class Food {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false)
+    private String foodCode;
     private String name;
-
     private String description;
-
     private Long price;
 
     @Lob
     @Column(columnDefinition = "longblob")
-    private byte[] img;
+    private byte[] image;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
@@ -36,15 +39,15 @@ public class Product {
     @JsonIgnore
     private Category category;
 
-    public ProductDto getProductDto(){
-        return ProductDto.builder()
+    public FoodDto getFoodDto(){
+        return FoodDto.builder()
                 .id(id)
                 .name(name)
                 .description(description)
+                .foodCode(foodCode)
                 .price(price)
-                .returnedImg(img)
+                .returnedImage(image)
                 .categoryId(category.getId())
-                .categoryName(category.getName())
                 .build();
     }
 }

@@ -12,25 +12,20 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDto implements Serializable {
+public class FoodDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-
     private String name;
-
+    private String foodCode;
     private String description;
-
     private Long price;
 
-    private byte[] returnedImg;
-
     @JsonSerialize(using = MultipartFileSerializer.class)
-    private MultipartFile img;
+    private MultipartFile image;
 
+    private byte[] returnedImage;
     private Integer categoryId;
-
-    private String categoryName;
 }

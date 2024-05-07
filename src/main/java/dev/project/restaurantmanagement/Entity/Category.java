@@ -8,7 +8,10 @@ import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "category")
+@Table(
+        name = "category",
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"name"})}
+)
 @Getter
 @Setter
 @NoArgsConstructor

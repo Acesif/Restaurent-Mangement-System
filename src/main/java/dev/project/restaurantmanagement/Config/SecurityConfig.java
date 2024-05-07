@@ -31,10 +31,17 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         req -> req
-                                .requestMatchers("/api/v1/auth/login","/api/v1/auth/register")
+                                .requestMatchers(
+                                        "/api/v1/auth/login",
+                                        "/api/v1/auth/register"
+                                )
                                 .permitAll()
-                                .requestMatchers("/api/v1/admin/**")
+                                .requestMatchers(
+                                        "/api/v1/admin/**"
+                                )
                                 .hasAuthority(Role.ADMIN.name())
+                                .anyRequest()
+                                .permitAll()
                 )
                 .userDetailsService(userDetailsService)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
