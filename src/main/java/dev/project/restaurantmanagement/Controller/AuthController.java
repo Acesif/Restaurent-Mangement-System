@@ -28,19 +28,19 @@ public class AuthController implements AuthRouter {
 
     @Override
     public ResponseEntity<?> signUpUser(UserDto registerRequest) {
-        Response createdUserDto = authService.registerUser(registerRequest);
+        Response<AuthResponse> createdUserDto = authService.registerUser(registerRequest);
         return new ResponseEntity<>(createdUserDto,HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> loginUser(LoginRequest loginRequest) {
-        Response login = authService.authenticate(loginRequest);
+        Response<AuthResponse> login = authService.authenticate(loginRequest);
         return new ResponseEntity<>(login,HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> signUpAdmin(UserDto registerRequest) {
-        Response createdAdminDto = authService.registerAdmin(registerRequest);
+        Response<AuthResponse> createdAdminDto = authService.registerAdmin(registerRequest);
         return new ResponseEntity<>(createdAdminDto,HttpStatus.OK);
     }
 }

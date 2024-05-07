@@ -39,7 +39,7 @@ public class AuthService {
                 .email(registerRequest.getEmail())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .phoneNumber(registerRequest.getPhoneNumber())
-                .role(Role.USER)
+                .role(Role.CUSTOMER)
                 .build();
         User createdUser = userRepository.save(user);
 
@@ -65,21 +65,21 @@ public class AuthService {
                     .message("User already exists")
                     .build();
         }
-        User admin = User.builder()
+        User staff = User.builder()
                 .name(registerRequest.getName())
                 .email(registerRequest.getEmail())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .phoneNumber(registerRequest.getPhoneNumber())
-                .role(Role.ADMIN)
+                .role(registerRequest.getRole())
                 .build();
-        User createdAdmin = userRepository.save(admin);
+        User createdAdmin = userRepository.save(staff);
 
         String token = jwtService.generateToken(createdAdmin);
 
         return Response.<AuthResponse>builder()
                 .isSuccess(true)
                 .code(201)
-                .message("Admin created successfully")
+                .message(createdAdmin.getRole()+" created successfully")
                 .values(AuthResponse.builder()
                         .email(createdAdmin.getEmail())
                         .role(createdAdmin.getRole())

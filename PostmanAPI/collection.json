@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "2173471c-3224-47a4-91c1-ce6e46d36ffe",
+		"name": "Restaurent Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30664351",
+		"_collection_link": "https://dark-capsule-765763.postman.co/workspace/My-Workspace~23db06f8-eb15-4cca-8c62-bfb758f96ad3/collection/30664351-2173471c-3224-47a4-91c1-ce6e46d36ffe?action=share&source=collection_link&creator=30664351"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login-admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@restaurent.com\",\r\n    \"password\":\"admin123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "login-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"b@b.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"aaa\",\r\n    \"phoneNumber\":\"0000000000\",\r\n    \"email\":\"b@b.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "create-staff",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"aaa\",\r\n    \"phoneNumber\":\"0000000000\",\r\n    \"email\":\"b@b.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/auth/register"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTA2MjkxNywiZXhwIjoxNzE1MTQ5MzE3fQ.dNPu0sjMGs5Z6ppozPU9DBEitDwEquoi8ySJewwVIW-_hWD5Wrv2y9CYTibQ6j0_U3wQoRkFm02Hej8CM2IF8w"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "onet",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "zeze",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/asif.int.tech/Downloads/placement.jpeg"
+										}
+									]
+								},
+								"url": "http://localhost:8080/api/v1/admin/category"
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTA2MjkxNywiZXhwIjoxNzE1MTQ5MzE3fQ.dNPu0sjMGs5Z6ppozPU9DBEitDwEquoi8ySJewwVIW-_hWD5Wrv2y9CYTibQ6j0_U3wQoRkFm02Hej8CM2IF8w"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "two",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "oneone",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/asif.int.tech/Pictures/Screenshots/Screenshot 2024-04-25 111542.png"
+										}
+									]
+								},
+								"url": "http://localhost:8080/api/v1/admin/category/4"
+							},
+							"response": []
+						},
+						{
+							"name": "getAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTA2MjkxNywiZXhwIjoxNzE1MTQ5MzE3fQ.dNPu0sjMGs5Z6ppozPU9DBEitDwEquoi8ySJewwVIW-_hWD5Wrv2y9CYTibQ6j0_U3wQoRkFm02Hej8CM2IF8w"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/v1/admin/category"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Food",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTA2MjkxNywiZXhwIjoxNzE1MTQ5MzE3fQ.dNPu0sjMGs5Z6ppozPU9DBEitDwEquoi8ySJewwVIW-_hWD5Wrv2y9CYTibQ6j0_U3wQoRkFm02Hej8CM2IF8w"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "dsfasdf",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "zeze",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/asif.int.tech/Downloads/placement.jpeg"
+										},
+										{
+											"key": "price",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "foodCode",
+											"value": "F005",
+											"type": "text"
+										}
+									]
+								},
+								"url": "http://localhost:8080/api/v1/admin/food"
+							},
+							"response": []
+						},
+						{
+							"name": "getAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTA2MjkxNywiZXhwIjoxNzE1MTQ5MzE3fQ.dNPu0sjMGs5Z6ppozPU9DBEitDwEquoi8ySJewwVIW-_hWD5Wrv2y9CYTibQ6j0_U3wQoRkFm02Hej8CM2IF8w"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/v1/admin/category"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
