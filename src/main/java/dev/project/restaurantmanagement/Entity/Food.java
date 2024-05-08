@@ -39,6 +39,10 @@ public class Food {
     @JsonIgnore
     private Category category;
 
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name="order_id", nullable=false)
+    private Order order;
+
     public FoodDto getFoodDto(){
         return FoodDto.builder()
                 .id(id)
