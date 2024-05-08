@@ -5,6 +5,7 @@ import dev.project.restaurantmanagement.Dto.UserDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 public interface AuthRouter {
@@ -14,6 +15,9 @@ public interface AuthRouter {
 
     @PostMapping("/register")
     ResponseEntity<?> signUpUser(@RequestBody UserDto registerRequest);
+
+    @PutMapping("/resetpass")
+    ResponseEntity<?> updatePassword(@RequestBody UserDto registerRequest);
 
     @PostMapping("/login")
     ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest);

@@ -43,6 +43,21 @@ public class CategoryService {
                 .build();
     }
 
+    public Response<CategoryDto> getCategoryById(Integer id){
+        Category category = categoryRepository.findById(id).orElseThrow();
+        return Response.<CategoryDto>builder()
+                .isSuccess(true)
+                .code(200)
+                .message("Category successfully fetched")
+                .values(CategoryDto.builder()
+                        .id(category.getId())
+                        .name(category.getName())
+                        .description(category.getDescription())
+                        .returnedImage(category.getImage())
+                        .build())
+                .build();
+    }
+
     public Response<List<CategoryDto>> getAllCategories() {
         List<CategoryDto> allCategories =  categoryRepository.findAll()
                 .stream()
@@ -53,6 +68,27 @@ public class CategoryService {
                 .code(200)
                 .message("All categories fetched")
                 .values(allCategories)
+                .build();
+    }
+
+    public Response<CategoryDto> updateCategory(CategoryDto categoryDto){
+        Category category = categoryRepository.findById(categoryDto.getId()).orElseThrow();
+        category.setName(categoryDto.getName());
+        category.setDescription(categoryDto.getDescription());
+        category.setImage(categoryDto.getReturnedImage());
+
+        Category savedCategory = categoryRepository.save(category);
+
+        return Response.<CategoryDto>builder()
+                .isSuccess(true)
+                .code(201)
+                .message("Category successfully updated")
+                .values(CategoryDto.builder()
+                        .id(savedCategory.getId())
+                        .name(savedCategory.getName())
+                        .description(savedCategory.getDescription())
+                        .image(categoryDto.getImage())
+                        .build())
                 .build();
     }
 

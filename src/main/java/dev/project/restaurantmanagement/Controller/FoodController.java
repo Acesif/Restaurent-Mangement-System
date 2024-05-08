@@ -24,19 +24,31 @@ public class FoodController implements FoodRouter {
     
     @Override
     public ResponseEntity<?> postFood(FoodDto foodDto) throws IOException {
-        Response<FoodDto> createdFoodDto = foodService.postProduct(foodDto);
-        return new ResponseEntity<>(createdFoodDto,HttpStatus.CREATED);
+        Response<FoodDto> createdFoodDto = foodService.postFood(foodDto);
+        return new ResponseEntity<>(createdFoodDto,HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> getAllFoodsByCategory(Integer categoryId) {
-        Response<List<FoodDto>> foodDtoList = foodService.getAllProductsByCategory(categoryId);
+        Response<List<FoodDto>> foodDtoList = foodService.getAllFoodsByCategory(categoryId);
         return new ResponseEntity<>(foodDtoList,HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> getFoodsByCategoryAndTitle(Integer categoryId, String name) {
-        Response<List<FoodDto>> foodDtoList = foodService.getProductsByCategoryAndName(categoryId,name);
+        Response<List<FoodDto>> foodDtoList = foodService.getFoodsByCategoryAndName(categoryId,name);
         return new ResponseEntity<>(foodDtoList, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<?> updateFood(FoodDto foodDto) throws IOException {
+        Response<FoodDto> updatedFoodDto = foodService.updateFood(foodDto);
+        return new ResponseEntity<>(updatedFoodDto,HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<?> deleteFood(Integer id) {
+        Response<Void> deleteFoodDto = foodService.deleteFood(id);
+        return new ResponseEntity<>(deleteFoodDto,HttpStatus.CREATED);
     }
 }

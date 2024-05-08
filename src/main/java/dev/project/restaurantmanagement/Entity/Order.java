@@ -1,9 +1,12 @@
 package dev.project.restaurantmanagement.Entity;
 
+import dev.project.restaurantmanagement.Dto.CategoryDto;
+import dev.project.restaurantmanagement.Dto.OrderDto;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
@@ -33,4 +36,14 @@ public class Order {
 
     @Column(nullable = false)
     private Float bill;
+
+    public OrderDto getOrderDto(){
+        return OrderDto.builder()
+                .id(id)
+                .orderCode(orderCode)
+                .bill(bill)
+                .foodCodeList(getFood().stream().map(Food::getFoodCode).collect(Collectors.toList()))
+                .user_id(user.getId())
+                .build();
+    }
 }

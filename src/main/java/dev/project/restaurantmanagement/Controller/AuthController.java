@@ -33,6 +33,12 @@ public class AuthController implements AuthRouter {
     }
 
     @Override
+    public ResponseEntity<?> updatePassword(UserDto updateRequest) {
+        Response<UserDto> updatedPass = authService.updatePassword(updateRequest);
+        return new ResponseEntity<>(updatedPass,HttpStatus.OK);
+    }
+
+    @Override
     public ResponseEntity<?> loginUser(LoginRequest loginRequest) {
         Response<AuthResponse> login = authService.authenticate(loginRequest);
         return new ResponseEntity<>(login,HttpStatus.OK);

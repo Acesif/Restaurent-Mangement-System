@@ -57,6 +57,24 @@ public class AuthService {
                 .build();
     }
 
+    public Response<UserDto> updatePassword(UserDto userDto){
+        User user = userRepository.findById(userDto.getId()).orElseThrow();
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        return Response.<UserDto>builder()
+                .isSuccess(true)
+                .code(200)
+                .message("Password successfully updated")
+                .values(UserDto.builder()
+                        .id(user.getId())
+                        .email(user.getEmail())
+                        .name(user.getName())
+                        .role(user.getRole())
+                        .phoneNumber(user.getPhoneNumber())
+                        .build())
+                .build();
+    }
+
     public Response<AuthResponse> registerAdmin(UserDto registerRequest) {
         if(userRepository.findByEmail(registerRequest.getEmail()).isPresent()){
             return Response.<AuthResponse>builder()

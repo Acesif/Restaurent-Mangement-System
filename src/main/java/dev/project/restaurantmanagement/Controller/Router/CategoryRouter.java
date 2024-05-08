@@ -12,6 +12,12 @@ public interface CategoryRouter {
     @GetMapping
     ResponseEntity<?> getAllCategories();
 
+    @GetMapping("/{id}")
+    ResponseEntity<?> getCategoryById(@PathVariable("id") Integer id);
+
+    @PutMapping
+    ResponseEntity<?> updateCategory(@ModelAttribute CategoryDto categoryDto);
+
     @DeleteMapping("/{id}")
     ResponseEntity<?> deleteCategory(@PathVariable("id") Integer id);
 

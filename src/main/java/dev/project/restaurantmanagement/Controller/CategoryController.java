@@ -24,16 +24,24 @@ public class CategoryController implements CategoryRouter {
 
     public ResponseEntity<?> postCategory(CategoryDto categoryDto) throws Exception {
         Response<CategoryDto> createdDto = categoryService.postCategory(categoryDto);
-        if(createdDto == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(createdDto,HttpStatus.CREATED);
+        return new ResponseEntity<>(createdDto,HttpStatus.OK);
     }
 
     public ResponseEntity<?> getAllCategories(){
         Response<List<CategoryDto>> categoryDtoList = categoryService.getAllCategories();
-        if(categoryDtoList == null) return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(categoryDtoList,HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<?> getCategoryById(Integer id) {
+        Response<CategoryDto> categoryDto = categoryService.getCategoryById(id);
+        return new ResponseEntity<>(categoryDto,HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<?> updateCategory(CategoryDto categoryDto) {
+        Response<CategoryDto> updatedCategory = categoryService.updateCategory(categoryDto);
+        return new ResponseEntity<>(updatedCategory,HttpStatus.OK);
     }
 
     public ResponseEntity<?> deleteCategory(@PathVariable("id") Integer id){
