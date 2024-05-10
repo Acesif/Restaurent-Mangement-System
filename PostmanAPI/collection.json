@@ -1,0 +1,803 @@
+{
+	"info": {
+		"_postman_id": "2f18377d-49de-45d7-bf06-6bc1d390cc53",
+		"name": "Restaurent Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login-admin",
+					"id": "d5a58c60-422f-466a-9752-c324833b7125",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@restaurent.com\",\r\n    \"password\":\"admin123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "login-user",
+					"id": "c97f0e97-2823-4d49-a8b5-d5f14dbc35a6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"b@b.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"id": "18458ef2-7f5c-4016-9e2f-5a9c33f91206",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"user\",\r\n    \"phoneNumber\":\"0000000000\",\r\n    \"email\":\"customer@rest.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/auth/register"
+					},
+					"response": []
+				}
+			],
+			"id": "e5269459-dab3-4402-8a72-6c9502b1f153"
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "getAllUser",
+					"id": "54a7c899-699f-4ae8-960e-5d5fa58781da",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3MzIyMywiZXhwIjoxNzE1MzU5NjIzfQ.vOwjonAxjjwyWWZFxTn9QMI4-OQlwVvznt1y2-GF3PbSQPq7AJ-8G-qLbwtJoZlGWn5DbzYmyUvvbuTt79z9_g"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/admin/users"
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"id": "760bbed2-6a71-46fe-a9c8-1449ebf8b27d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3MzIyMywiZXhwIjoxNzE1MzU5NjIzfQ.vOwjonAxjjwyWWZFxTn9QMI4-OQlwVvznt1y2-GF3PbSQPq7AJ-8G-qLbwtJoZlGWn5DbzYmyUvvbuTt79z9_g"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/admin/10"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"id": "1577f785-a4e1-4682-a746-ae23b31168be",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3MzIyMywiZXhwIjoxNzE1MzU5NjIzfQ.vOwjonAxjjwyWWZFxTn9QMI4-OQlwVvznt1y2-GF3PbSQPq7AJ-8G-qLbwtJoZlGWn5DbzYmyUvvbuTt79z9_g"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/admin/16"
+					},
+					"response": []
+				},
+				{
+					"name": "create-staff",
+					"id": "8114c2fd-b5a4-49a5-97d5-ecf63bbb1840",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"aaa\",\r\n    \"phoneNumber\":\"0000000000\",\r\n    \"email\":\"b@b.com\",\r\n    \"password\":\"12345678\",\r\n    \"role\": \"MANAGER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/admin"
+					},
+					"response": []
+				}
+			],
+			"id": "6cd1b1e3-6a59-4cde-be14-14f19eddd08d"
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "post",
+					"id": "1d28a7e6-3bbc-4d98-9518-42951079526a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3NDEyOCwiZXhwIjoxNzE1MzYwNTI4fQ.3Zjcm46v3fklQPncfiuzXJaum2igtuHVCD_4V6EUCoad0sPRknlBgvX_g0isBdF_7oen9rksDJQmSSiRpZfMqw"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "five",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "dhfasjhdfkshjdf",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"fileNotInWorkingDirectoryWarning": "This file isn't in your working directory. Teammates you share this request with won't be able to use this file. To make collaboration easier you can setup your working directory in Settings.",
+									"filesNotInWorkingDirectory": [
+										"/C:/Users/Acesif/Pictures/sample/3.jpeg"
+									],
+									"src": "/C:/Users/Acesif/Pictures/sample/3.jpeg"
+								}
+							]
+						},
+						"url": "http://localhost:8080/api/v1/admin/category"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"id": "7236f559-0b82-4553-a03f-652962341658",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3NDMwMCwiZXhwIjoxNzE1MzYwNzAwfQ.syt-ASitO4V-_YRMJxMmh9faIao8rnscgfAbaVEJdyuRVf9TA1qEOBstJJRfNTUvYgmQYAkpz2Ua3dOVoHbKqQ"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "up",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "updated",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Acesif/Pictures/Screenshot 2023-01-31 at 14-57-30 Dakota Robertson on Twitter.png"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8080/api/v1/admin/category"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"id": "3df6bc78-0dc1-44c5-8dbd-8014aec77ae0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTA2MjkxNywiZXhwIjoxNzE1MTQ5MzE3fQ.dNPu0sjMGs5Z6ppozPU9DBEitDwEquoi8ySJewwVIW-_hWD5Wrv2y9CYTibQ6j0_U3wQoRkFm02Hej8CM2IF8w"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "two",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "oneone",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/asif.int.tech/Pictures/Screenshots/Screenshot 2024-04-25 111542.png"
+								}
+							]
+						},
+						"url": "http://localhost:8080/api/v1/admin/category/4"
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"id": "85df1863-d62b-4b88-a09a-4cd8143f5b7d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3NDMwMCwiZXhwIjoxNzE1MzYwNzAwfQ.syt-ASitO4V-_YRMJxMmh9faIao8rnscgfAbaVEJdyuRVf9TA1qEOBstJJRfNTUvYgmQYAkpz2Ua3dOVoHbKqQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/admin/category"
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"id": "43aafe48-9f03-4d65-9162-7636778e8604",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3NDMwMCwiZXhwIjoxNzE1MzYwNzAwfQ.syt-ASitO4V-_YRMJxMmh9faIao8rnscgfAbaVEJdyuRVf9TA1qEOBstJJRfNTUvYgmQYAkpz2Ua3dOVoHbKqQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/admin/category/1"
+					},
+					"response": []
+				}
+			],
+			"id": "7c1c66a6-fc94-45e0-9767-6e92f65dd0f2"
+		},
+		{
+			"name": "Food",
+			"item": [
+				{
+					"name": "create",
+					"id": "2ac64d74-cc92-457f-bd79-baac951cd63e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTMyMjA0NywiZXhwIjoxNzE1NDA4NDQ3fQ.rDSKcms0AZl_RHAJnc2dCMgpaaGxinqSWFI698WHFkQPy-Cm3gl-tBNGg4SPw6WSMsAlk_izx54uFe62T-_zqQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "dsfffdsa11",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "zeze",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"fileNotInWorkingDirectoryWarning": "This file isn't in your working directory. Teammates you share this request with won't be able to use this file. To make collaboration easier you can setup your working directory in Settings.",
+									"filesNotInWorkingDirectory": [
+										"/C:/Users/Acesif/Pictures/sample/5.jpeg"
+									],
+									"src": "/C:/Users/Acesif/Pictures/sample/5.jpeg"
+								},
+								{
+									"key": "price",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "foodCode",
+									"value": "F002",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8080/api/v1/admin/food"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"id": "ebf6bc1b-4132-46ae-8a47-6837cd0d1764",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3NDMwMCwiZXhwIjoxNzE1MzYwNzAwfQ.syt-ASitO4V-_YRMJxMmh9faIao8rnscgfAbaVEJdyuRVf9TA1qEOBstJJRfNTUvYgmQYAkpz2Ua3dOVoHbKqQ"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "up",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "updated",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"fileNotInWorkingDirectoryWarning": "This file isn't in your working directory. Teammates you share this request with won't be able to use this file. To make collaboration easier you can setup your working directory in Settings.",
+									"filesNotInWorkingDirectory": [
+										"/C:/Users/Acesif/Pictures/g.jpg"
+									],
+									"src": "/C:/Users/Acesif/Pictures/g.jpg"
+								},
+								{
+									"key": "price",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "foodCode",
+									"value": "F005",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8080/api/v1/admin/food"
+					},
+					"response": []
+				},
+				{
+					"name": "getByName",
+					"id": "add026d4-cc86-49ec-906d-bddeb3fe8d79",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3NTk5OCwiZXhwIjoxNzE1MzYyMzk4fQ.EBn9WpIo3WN-4Onh1gTgxgaQAPQmzU2ubUR_X2laUOnQFaWkTlQfggxZFSt1V86yxcSY1JcjcdU2RElHj4Ymwg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/admin/food/1/food/p"
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"id": "533c7514-ff73-470d-afcd-8debda5b7be6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3NTk5OCwiZXhwIjoxNzE1MzYyMzk4fQ.EBn9WpIo3WN-4Onh1gTgxgaQAPQmzU2ubUR_X2laUOnQFaWkTlQfggxZFSt1V86yxcSY1JcjcdU2RElHj4Ymwg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/admin/food/1/foods"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"id": "8a38d77f-c9aa-44f9-8c19-74686b87c909",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3NTk5OCwiZXhwIjoxNzE1MzYyMzk4fQ.EBn9WpIo3WN-4Onh1gTgxgaQAPQmzU2ubUR_X2laUOnQFaWkTlQfggxZFSt1V86yxcSY1JcjcdU2RElHj4Ymwg"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/admin/food/2"
+					},
+					"response": []
+				}
+			],
+			"id": "3b96a566-99e4-472b-91a1-3130e36879f9"
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "getAll",
+					"id": "7233c7e5-4c69-4189-9cf0-bf2db60a7cea",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTI3NTk5OCwiZXhwIjoxNzE1MzYyMzk4fQ.EBn9WpIo3WN-4Onh1gTgxgaQAPQmzU2ubUR_X2laUOnQFaWkTlQfggxZFSt1V86yxcSY1JcjcdU2RElHj4Ymwg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/admin/order"
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"id": "cea5a189-9bb6-4cee-adb7-7ab01de25c0d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTMyMTI0NiwiZXhwIjoxNzE1NDA3NjQ2fQ.RuaL61LRKvq_JCvegiHaYDxPuP0p8AqGkrCUzX4VsnnzAi9qKAl1PNJdDbVgMNR2RQviihz45XY4dDpD69pbmQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderCode\":\"O003\",\r\n    \"foodCodeList\":[\r\n        \"F001\",\r\n        \"F002\"\r\n    ],\r\n    \"user_id\": 18,\r\n    \"bill\": 69.12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/admin/order"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"id": "510c9184-37ab-4222-93e4-effd3d12aaac",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTMyNjk2MywiZXhwIjoxNzE1NDEzMzYzfQ.cclCejy9vZYphh3BRyUfUbkpWKwXCeajPx_nqrNuv-zQJk6nYJjIHKhWYfCMWotsTTX0Nyv14bYBmQUMJCLezw"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderCode\":\"O003\",\r\n    \"foodCodeList\":[\r\n        \"F003\",\r\n        \"F005\"\r\n    ],\r\n    \"user_id\": 18,\r\n    \"bill\": 59.12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/admin/order"
+					},
+					"response": []
+				},
+				{
+					"name": "getByCode",
+					"id": "93237221-acd0-4003-aba7-c3d875392797",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTMyMTI0NiwiZXhwIjoxNzE1NDA3NjQ2fQ.RuaL61LRKvq_JCvegiHaYDxPuP0p8AqGkrCUzX4VsnnzAi9qKAl1PNJdDbVgMNR2RQviihz45XY4dDpD69pbmQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderCode\":\"O003\",\r\n    \"foodCodeList\":[\r\n        \"F001\",\r\n        \"F002\"\r\n    ],\r\n    \"user_id\": 18,\r\n    \"bill\": 69.12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/admin/order/ordr_O002"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"id": "0d4fcc13-bb55-438b-8d67-1cc67c73fb23",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkByZXN0YXVyZW50LmNvbSIsImlhdCI6MTcxNTMyMTI0NiwiZXhwIjoxNzE1NDA3NjQ2fQ.RuaL61LRKvq_JCvegiHaYDxPuP0p8AqGkrCUzX4VsnnzAi9qKAl1PNJdDbVgMNR2RQviihz45XY4dDpD69pbmQ"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderCode\":\"O003\",\r\n    \"foodCodeList\":[\r\n        \"F001\",\r\n        \"F002\"\r\n    ],\r\n    \"user_id\": 18,\r\n    \"bill\": 69.12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/admin/order/3"
+					},
+					"response": []
+				}
+			],
+			"id": "788c054c-cef7-48a0-9218-f543ff1ddf5f"
+		},
+		{
+			"name": "Reservation",
+			"item": [
+				{
+					"name": "post",
+					"id": "0cd7d934-0b69-4233-bcbc-737698d665f1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiQGIuY29tIiwiaWF0IjoxNzE1MzI4MzIwLCJleHAiOjE3MTU0MTQ3MjB9.yqmuZBofEFdnTeIC8KkQ_ZE-jkIyny6dDTYEu19aXFE1rbboKD_PE_O713Z3PL6poZkqSDRaOaXvPYmxSu0kfg"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reservationCode\":\"RSV001\",\r\n    \"amountOfPeople\": 3,\r\n    \"slotTime\": \"2020-05-30T09:45:15\",\r\n    \"user_id\": 21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/reservation"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"id": "1529db6f-7eba-480f-8496-169324546111",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiQGIuY29tIiwiaWF0IjoxNzE1MzI4MzIwLCJleHAiOjE3MTU0MTQ3MjB9.yqmuZBofEFdnTeIC8KkQ_ZE-jkIyny6dDTYEu19aXFE1rbboKD_PE_O713Z3PL6poZkqSDRaOaXvPYmxSu0kfg"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reservationCode\":\"RSV001\",\r\n    \"amountOfPeople\": 10,\r\n    \"slotTime\": \"2020-05-30T09:45:15\",\r\n    \"user_id\": 21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/reservation"
+					},
+					"response": []
+				},
+				{
+					"name": "getByCode",
+					"id": "799b5b0b-47ab-4803-b838-22c469e02d5b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiQGIuY29tIiwiaWF0IjoxNzE1MzI4MzIwLCJleHAiOjE3MTU0MTQ3MjB9.yqmuZBofEFdnTeIC8KkQ_ZE-jkIyny6dDTYEu19aXFE1rbboKD_PE_O713Z3PL6poZkqSDRaOaXvPYmxSu0kfg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reservationCode\":\"RSV001\",\r\n    \"amountOfPeople\": 10,\r\n    \"slotTime\": \"2020-05-30T09:45:15\",\r\n    \"user_id\": 21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/reservation/res_RSV002"
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"id": "33256996-ba4d-4897-9330-fac7ad5bc6af",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiQGIuY29tIiwiaWF0IjoxNzE1MzI3MDgzLCJleHAiOjE3MTU0MTM0ODN9.msARo6O0Ug4B6pT3omc20L6rOuYf_UYtVWVQd2dNJ0NGG9cM5z9k9K_iyoYxxYJpPLHKy4lojC4UjvXRFDZXlQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reservationCode\":\"RSV001\",\r\n    \"amountOfPeople\": 5,\r\n    \"slotTime\": \"2019-04-28T14:45:15\",\r\n    \"user_id\": 21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/reservation"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"id": "f981e39e-000e-4ba3-8f94-802d9f91caf7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiQGIuY29tIiwiaWF0IjoxNzE1MzI3MDgzLCJleHAiOjE3MTU0MTM0ODN9.msARo6O0Ug4B6pT3omc20L6rOuYf_UYtVWVQd2dNJ0NGG9cM5z9k9K_iyoYxxYJpPLHKy4lojC4UjvXRFDZXlQ"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reservationCode\":\"RSV001\",\r\n    \"amountOfPeople\": 5,\r\n    \"slotTime\": \"2019-04-28T14:45:15\",\r\n    \"user_id\": 21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/reservation/4"
+					},
+					"response": []
+				}
+			],
+			"id": "f45f2fcf-d101-4376-a1b2-3614ec99c9ee"
+		}
+	]
+}
