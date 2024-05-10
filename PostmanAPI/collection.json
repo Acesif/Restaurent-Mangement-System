@@ -76,7 +76,8 @@
 					"response": []
 				}
 			],
-			"id": "e5269459-dab3-4402-8a72-6c9502b1f153"
+			"id": "e5269459-dab3-4402-8a72-6c9502b1f153",
+			"description": "This documents the Registration and Login APIs\n\nAdmin credentials are generated, they are:\n\n``` json\n{\n    \"email\": \"admin@restaurent.com\",\n    \"password\": \"admin123456\"\n}\n\n ```"
 		},
 		{
 			"name": "Admin",
