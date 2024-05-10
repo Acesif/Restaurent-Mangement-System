@@ -889,7 +889,3 @@ DELETE /api/v1/reservation/4
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline|
 
-### Responses Data Schema
-
-# Data Schema
-
