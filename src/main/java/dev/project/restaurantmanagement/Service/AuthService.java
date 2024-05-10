@@ -75,37 +75,6 @@ public class AuthService {
                 .build();
     }
 
-    public Response<AuthResponse> registerAdmin(UserDto registerRequest) {
-        if(userRepository.findByEmail(registerRequest.getEmail()).isPresent()){
-            return Response.<AuthResponse>builder()
-                    .isSuccess(false)
-                    .code(400)
-                    .message("User already exists")
-                    .build();
-        }
-        User staff = User.builder()
-                .name(registerRequest.getName())
-                .email(registerRequest.getEmail())
-                .password(passwordEncoder.encode(registerRequest.getPassword()))
-                .phoneNumber(registerRequest.getPhoneNumber())
-                .role(registerRequest.getRole())
-                .build();
-        User createdAdmin = userRepository.save(staff);
-
-        String token = jwtService.generateToken(createdAdmin);
-
-        return Response.<AuthResponse>builder()
-                .isSuccess(true)
-                .code(201)
-                .message(createdAdmin.getRole()+" created successfully")
-                .values(AuthResponse.builder()
-                        .email(createdAdmin.getEmail())
-                        .role(createdAdmin.getRole())
-                        .token(token)
-                        .build())
-                .build();
-    }
-
     public Response<AuthResponse> authenticate(LoginRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(

@@ -1,5 +1,6 @@
 package dev.project.restaurantmanagement.Entity;
 
+import dev.project.restaurantmanagement.Dto.ReservationDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(
         name = "reservation",
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"reservationCode"})}
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"resv_id"})}
 )
 public class Reservation {
 
@@ -33,4 +34,14 @@ public class Reservation {
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name="user_id", nullable=false)
     private User user;
+
+    public ReservationDto getReservationDto(){
+        return ReservationDto.builder()
+                .id(id)
+                .reservationCode(reservationCode)
+                .amountOfPeople(amountOfPeople)
+                .slotTime(slotTime)
+                .user_id(user.getId())
+                .build();
+    }
 }

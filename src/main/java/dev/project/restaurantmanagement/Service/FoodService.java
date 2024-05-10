@@ -98,7 +98,7 @@ public class FoodService {
             food.setCategory(category.orElseThrow());
             food.setDescription(foodDto.getDescription());
             food.setPrice(foodDto.getPrice());
-            food.setImage(foodDto.getReturnedImage());
+            food.setImage(foodDto.getImage().getBytes());
             food.setFoodCode(foodDto.getFoodCode());
 
             Food updatedFood = foodRepository.save(food);

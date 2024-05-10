@@ -1,11 +1,14 @@
 package dev.project.restaurantmanagement.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import dev.project.restaurantmanagement.Dto.FoodDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,7 +18,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @AllArgsConstructor
 @Table(
         name = "food",
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"foodCode"})}
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"food_id"})}
 )
 public class Food {
 
@@ -23,7 +26,7 @@ public class Food {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "food_id")
     private String foodCode;
     private String name;
     private String description;
@@ -39,9 +42,9 @@ public class Food {
     @JsonIgnore
     private Category category;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,optional = false)
-    @JoinColumn(name="order_id", nullable=false)
-    private Order order;
+    @ManyToMany(mappedBy = "foods")
+    List<Order> orders;
+
 
     public FoodDto getFoodDto(){
         return FoodDto.builder()

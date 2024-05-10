@@ -10,5 +10,4 @@ import java.util.Optional;
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     Optional<Order> getOrderByOrderCode(String code);
-    void deleteOrderByOrderCode(String code);
 }

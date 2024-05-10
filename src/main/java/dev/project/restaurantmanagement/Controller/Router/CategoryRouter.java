@@ -4,6 +4,8 @@ import dev.project.restaurantmanagement.Dto.CategoryDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 public interface CategoryRouter {
 
     @PostMapping
@@ -16,7 +18,7 @@ public interface CategoryRouter {
     ResponseEntity<?> getCategoryById(@PathVariable("id") Integer id);
 
     @PutMapping
-    ResponseEntity<?> updateCategory(@ModelAttribute CategoryDto categoryDto);
+    ResponseEntity<?> updateCategory(@ModelAttribute CategoryDto categoryDto) throws IOException;
 
     @DeleteMapping("/{id}")
     ResponseEntity<?> deleteCategory(@PathVariable("id") Integer id);

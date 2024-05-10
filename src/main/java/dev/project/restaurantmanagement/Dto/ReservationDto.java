@@ -23,5 +23,5 @@ public class ReservationDto {
 
     private Date slotTime;
 
-    private User user;
+    private Integer user_id;
 }

@@ -43,10 +43,4 @@ public class AuthController implements AuthRouter {
         Response<AuthResponse> login = authService.authenticate(loginRequest);
         return new ResponseEntity<>(login,HttpStatus.OK);
     }
-
-    @Override
-    public ResponseEntity<?> signUpAdmin(UserDto registerRequest) {
-        Response<AuthResponse> createdAdminDto = authService.registerAdmin(registerRequest);
-        return new ResponseEntity<>(createdAdminDto,HttpStatus.OK);
-    }
 }

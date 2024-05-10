@@ -1,5 +1,6 @@
 package dev.project.restaurantmanagement.Entity;
 
+import dev.project.restaurantmanagement.Dto.UserDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
@@ -80,5 +81,14 @@ public class User implements Serializable, UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public UserDto getUserDto(){
+        return UserDto.builder()
+                .name(name)
+                .email(email)
+                .role(role)
+                .phoneNumber(phoneNumber)
+                .build();
     }
 }

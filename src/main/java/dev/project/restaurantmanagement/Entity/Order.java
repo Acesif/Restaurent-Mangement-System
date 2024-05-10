@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Table(
         name = "orders",
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"orderCode"})}
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"order_id"})}
 )
 public class Order {
 
@@ -27,8 +27,16 @@ public class Order {
     @Column(name = "order_id", nullable = false)
     private String orderCode;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "order")
-    private List<Food> food;
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinTable(name = "order_food",
+            joinColumns = {
+                @JoinColumn(name = "order_id",referencedColumnName = "order_id")
+            },
+            inverseJoinColumns = {
+                @JoinColumn(name = "food_id", referencedColumnName = "food_id")
+            }
+    )
+    private List<Food> foods;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name="user_id", nullable=false)
@@ -42,7 +50,7 @@ public class Order {
                 .id(id)
                 .orderCode(orderCode)
                 .bill(bill)
-                .foodCodeList(getFood().stream().map(Food::getFoodCode).collect(Collectors.toList()))
+                .foodCodeList(getFoods().stream().map(Food::getFoodCode).collect(Collectors.toList()))
                 .user_id(user.getId())
                 .build();
     }

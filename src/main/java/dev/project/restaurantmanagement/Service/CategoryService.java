@@ -7,6 +7,7 @@ import dev.project.restaurantmanagement.Repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -71,11 +72,11 @@ public class CategoryService {
                 .build();
     }
 
-    public Response<CategoryDto> updateCategory(CategoryDto categoryDto){
+    public Response<CategoryDto> updateCategory(CategoryDto categoryDto) throws IOException {
         Category category = categoryRepository.findById(categoryDto.getId()).orElseThrow();
         category.setName(categoryDto.getName());
         category.setDescription(categoryDto.getDescription());
-        category.setImage(categoryDto.getReturnedImage());
+        category.setImage(categoryDto.getImage().getBytes());
 
         Category savedCategory = categoryRepository.save(category);
 

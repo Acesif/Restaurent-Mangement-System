@@ -21,6 +21,4 @@ public interface AuthRouter {
 
     @PostMapping("/login")
     ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest);
-    @PostMapping("/admin")
-    ResponseEntity<?> signUpAdmin(@RequestBody UserDto registerRequest);
 }

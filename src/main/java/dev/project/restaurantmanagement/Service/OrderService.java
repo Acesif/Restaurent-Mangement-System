@@ -23,17 +23,18 @@ public class OrderService {
     private final UserRepository userRepository;
     private final FoodRepository foodRepository;
 
-    public Response<OrderDto> postOrder(OrderDto orderDto){
+    public Response<OrderDto> postOrder(OrderDto orderDto) {
         User customer = userRepository.findById(orderDto.getUser_id()).orElseThrow();
         List<Food> foodList = new ArrayList<>();
-        for(String code: orderDto.getFoodCodeList()){
-            foodList.add(foodRepository.findByFoodCode(code).orElse(null));
+        for (String code : orderDto.getFoodCodeList()) {
+            foodList.add(foodRepository.findByFoodCode(code).orElseThrow());
         }
+
         Order order = Order.builder()
                 .user(customer)
                 .orderCode(orderDto.getOrderCode())
                 .bill(orderDto.getBill())
-                .food(foodList)
+                .foods(foodList)
                 .build();
         Order savedOrder = orderRepository.save(order);
 
@@ -71,14 +72,14 @@ public class OrderService {
                         .id(order.getId())
                         .orderCode(order.getOrderCode())
                         .user_id(order.getUser().getId())
-                        .foodCodeList(order.getFood().stream().map(Food::getFoodCode).collect(Collectors.toList()))
+                        .foodCodeList(order.getFoods().stream().map(Food::getFoodCode).collect(Collectors.toList()))
                         .orderCode(order.getOrderCode())
                         .build())
                 .build();
     }
 
-    public Response<Void> deleteOrder(String code){
-        orderRepository.deleteOrderByOrderCode(code);
+    public Response<Void> deleteOrder(Integer id){
+        orderRepository.deleteById(id);
         return Response.<Void>builder()
                 .isSuccess(true)
                 .code(200)
@@ -94,7 +95,7 @@ public class OrderService {
         }
         order.setBill(orderDto.getBill());
         order.setUser(userRepository.findById(orderDto.getUser_id()).orElse(order.getUser()));
-        order.setFood(foodList);
+        order.setFoods(foodList);
         Order savedOrder = orderRepository.save(order);
 
         return Response.<OrderDto>builder()
@@ -106,7 +107,7 @@ public class OrderService {
                         .id(savedOrder.getId())
                         .bill(savedOrder.getBill())
                         .user_id(savedOrder.getUser().getId())
-                        .foodCodeList(savedOrder.getFood().stream().map(Food::getFoodCode).collect(Collectors.toList()))
+                        .foodCodeList(savedOrder.getFoods().stream().map(Food::getFoodCode).collect(Collectors.toList()))
                         .build())
                 .build();
     }
