@@ -518,7 +518,8 @@
 					"response": []
 				}
 			],
-			"id": "3b96a566-99e4-472b-91a1-3130e36879f9"
+			"id": "3b96a566-99e4-472b-91a1-3130e36879f9",
+			"description": "This documents the CRUD operations of Food, only ADMIN and MANAGERs are authorized to make requests"
 		},
 		{
 			"name": "Orders",
@@ -655,7 +656,8 @@
 					"response": []
 				}
 			],
-			"id": "788c054c-cef7-48a0-9218-f543ff1ddf5f"
+			"id": "788c054c-cef7-48a0-9218-f543ff1ddf5f",
+			"description": "This documents the CRUD operations of Orders, only ADMIN, EMPLOYEEs and MANAGERs are authorized to make requests\n\nUsers are allowed to Create a new order, View their order and Update their order."
 		},
 		{
 			"name": "Reservation",
@@ -801,7 +803,8 @@
 					"response": []
 				}
 			],
-			"id": "f45f2fcf-d101-4376-a1b2-3614ec99c9ee"
+			"id": "f45f2fcf-d101-4376-a1b2-3614ec99c9ee",
+			"description": "This documents the CRUD operations of Reservation, only ADMIN, EMPLOYEE, CUSTOMER, MANAGERs are authorized to make requests"
 		}
 	]
 }
