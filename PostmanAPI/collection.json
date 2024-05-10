@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "2f18377d-49de-45d7-bf06-6bc1d390cc53",
 		"name": "Restaurent Management",
+		"description": "This project showcases a restaurent booking and management system",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
