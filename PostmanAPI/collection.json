@@ -74,6 +74,28 @@
 						"url": "http://localhost:8080/api/v1/auth/register"
 					},
 					"response": []
+				},
+				{
+					"name": "resetpass",
+					"id": "fd7e6551-b280-413b-8435-ca93bdfb0b26",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"user\",\r\n    \"phoneNumber\":\"0000000000\",\r\n    \"email\":\"customer@rest.com\",\r\n    \"password\":\"987654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/auth/resetpass"
+					},
+					"response": []
 				}
 			],
 			"id": "e5269459-dab3-4402-8a72-6c9502b1f153",
@@ -163,7 +185,7 @@
 				}
 			],
 			"id": "6cd1b1e3-6a59-4cde-be14-14f19eddd08d",
-			"description": "This documents the User CRUD operations, only ADMINs are authorized to make requests"
+			"description": "This documents the User CRUD operations, only ADMINs are authorized to make requests\n\nRoles of Staff are:\n\n``` properties\nADMIN,\nEMPLOYEE,\nMANAGER,\nCUSTOMER\n\n ```"
 		},
 		{
 			"name": "Category",
